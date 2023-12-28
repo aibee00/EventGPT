@@ -1,0 +1,44 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+model:
+  arch: pretrain_opt2.7b_llava_box_caption_roi
+  load_finetuned: False
+  load_pretrained: True  # Set here for eval
+
+  # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_opt2.7b.pth"
+  pretrained: "output/BLIP2/LlavaStyle/Pretrain_stage1/20231128104/checkpoint_9.pth"  # 2048 from epoch5
+
+  # vit encoder
+  image_size: 512
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+  # vit_model: "swint"
+
+  # Q-Former
+  num_query_token: 32
+
+  # OPT
+  opt_model: "facebook/opt-2.7b"
+
+  # generation configs
+  prompt: "Question: Please output the caption according to the given bounding box: <{}>. Answer: "
+
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 512
+        eval:
+          name: "blip_image_eval"
+          image_size: 512
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

@@ -1,0 +1,59 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+model:
+  arch: blip2_opt_llava_box_caption_roi
+  model_type: pretrain_opt2.7b_llava_box_caption_roi
+  load_finetuned: False
+  load_pretrained: False
+  # intialize stage 2 pretraining from stage 1 pretrained model
+  # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained.pth"
+  pretrained: "output/BLIP2/LlavaStyle/Pretrain_stage1/20231128104/checkpoint_9.pth"  # 相对路径时不要以‘/’开头
+  freeze_vit: True
+  # vit_model: "swint"
+
+  # Q-former
+  max_txt_len: 2048
+  num_query_token: 32
+
+
+datasets:
+  llava_box_caption_aibeeQA:
+    vis_processor:
+        train:
+          name: "blip2_box_image_train"
+          image_size: 512
+    text_processor:
+        train:
+          name: "blip_caption"
+
+run:
+  task: image_text_pretrain
+  # optimizer
+  lr_sched: "linear_warmup_cosine_lr"
+  init_lr: 1e-4
+  min_lr: 1e-5
+  warmup_lr: 1e-6
+
+  weight_decay: 0.05
+  max_epoch: 50
+  batch_size_train: 1 #16
+  batch_size_eval: 1 #16
+  num_workers: 4
+  warmup_steps: 2000
+
+  seed: 42
+  output_dir: "output/BLIP2/LlavaStyle/Pretrain_stage2"
+
+  amp: True
+  resume_ckpt_path: null
+
+  evaluate: False 
+  train_splits: ["train"]
+
+  device: "cuda"
+  world_size: 1
+  dist_url: "env://"
+  distributed: True

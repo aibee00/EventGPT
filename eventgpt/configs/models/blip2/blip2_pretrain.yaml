@@ -1,0 +1,51 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ ################ 
+# 注意，这个yaml是配置stage1`训练`用的
+# 1. vit 是freeze的
+# 2. image size = 224
+# 3. load_finetuned = False  # 因为这里的finetuned是指stage2中在coco上的微调，stage2(+llm)中去掉了一些层的权重，例如最后两层Linear/pos_embeds/word_embeds等
+# 4. 所以这里应该是从pretrain加载，所以load_pretrained在`eventgpt/projects/blip2/train/pretrain_stage1_event.yaml`中设置
+################
+
+model:
+  arch: pretrain
+  load_finetuned: False
+
+  # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained.pth"
+  # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained.pth"
+  # finetuned: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_finetune_coco.pth"
+  pretrained: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage1/20230714114/checkpoint_9.pth"
+
+  finetuned: ""
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage1/20230705191/checkpoint_9.pth"  # First version, use pretrain 32 query max_txt_len=32
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage1/20230710103/checkpoint_9.pth"  # use pretrain 32 query max_txt_len=512
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage1/20230710140/checkpoint_9.pth"  # wo pretrain 256 query max_txt_len=512
+  
+
+  # vit encoder
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+
+  # Q-Former
+  num_query_token: 32  # 注意, 在这里设置eval时的num_query_token, 在pretrain_stage1_event.yaml中设置train时的num_query_token
+
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 224
+        eval:
+          name: "blip_image_eval"
+          image_size: 224
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

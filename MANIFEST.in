@@ -1,0 +1,8 @@
+recursive-include eventgpt/configs *.yaml *.json
+recursive-include eventgpt/projects *.yaml *.json
+
+recursive-exclude eventgpt/datasets/download_scripts *
+recursive-exclude eventgpt/output *
+
+include requirements.txt
+include eventgpt/models/clip_models/bpe_simple_vocab_16e6.txt.gz

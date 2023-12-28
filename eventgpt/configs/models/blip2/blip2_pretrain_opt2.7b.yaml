@@ -1,0 +1,56 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+model:
+  arch: pretrain_opt2.7b
+  load_finetuned: False
+  load_pretrained: True  # Set here for eval
+
+  # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_opt2.7b.pth"
+  # pretrained: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230714153/checkpoint_9.pth"
+  # pretrained: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230718100/checkpoint_9.pth"  # grounding v0
+  # pretrained: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230720133/checkpoint_9.pth"  # grounding oracle
+  # pretrained: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230724215/checkpoint_9.pth"  # context v0
+  pretrained: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230810093/checkpoint_8.pth"  # dense caption vqa
+  finetuned: ""
+  # finetuned: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_caption_opt2.7b.pth"
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/pretrain_weights/blip2_finetune_coco.pth"  # download from https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_finetune_coco.pth
+  # pretrained: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage1/20230710103/checkpoint_9.pth"  # stage1, with pretrained model, max_txt_len=32
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230712165/checkpoint_9.pth"  # stage2, with finetuned stage1 model, max_txt_len=32
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230712174/checkpoint_9.pth"  # stage2, with finetuned stage1 model, max_txt_len=512
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230713125/checkpoint_9.pth"  # stage2, with finetuned stage1_model(cocofined), max_txt_len=512
+  # finetuned: "/ssd/wphu/chatglm/LAVIS/eventgpt/output/BLIP2/Pretrain_stage2/20230714130/checkpoint_9.pth"  # stage2, with finetuned stage1_model(nobbox), max_txt_len=512
+
+  # vit encoder
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+  # vit_model: "swint"
+
+  # Q-Former
+  num_query_token: 32
+
+  # OPT
+  opt_model: "facebook/opt-2.7b"
+
+  # generation configs
+  prompt: ""
+
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip_image_train"
+          image_size: 224
+        eval:
+          name: "blip_image_eval"
+          image_size: 224
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"
