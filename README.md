@@ -1,4 +1,4 @@
-# EventGPT
+EventGPT
 -----------
 This repository is used for predict the relationship or event between two objects in the images or videos. 
 
@@ -6,9 +6,9 @@ It is a multi-modal model equipped with ImageEncoder and LLM.
 
 # 1. Config
 ## 1.1 Environments
-Run a docker image to create a environment.
+Start a docker image to run environment.
 
-Note: Before you run the docker as following, you may need to change the local mount path first.
+Note: Before you run the docker as following, you may need to change the local mount path first in the `start_docker.sh`.
 
 ```bash
 bash start_docker.sh
@@ -17,7 +17,9 @@ bash start_docker.sh
 ## 1.2 Datasets
 
 This model train by two stages. 
+
 The stage1 trained on the first dataset.
+
 The stage2 trained on AibeeQA dataset, which was labeled by us in handcraft way.
 
 Assumption: The data is putted at path `cache`, which can be configed at `eventgpt/configs/default.yaml`.
