@@ -16,8 +16,7 @@ datasets:
               - ""
               - ""
           storage:
-              - eventgpt/annotations/label_result_530_llava-style-box_caption_en.json
-              - eventgpt/annotations/label_result_530_llava-style-box_caption_en.json
+              - eventgpt_dataset/AibeeQA/annotations/label_result_530_llava-style-box_caption_en.json
         val:
           url:
               # TODO make this order insensitive
@@ -26,16 +25,12 @@ datasets:
               - ""
               - ""
           storage:
-              - eventgpt/annotations/label_result_530_llava-style-box_caption_en.json
-              - eventgpt/annotations/answer_list.json
-              - eventgpt/annotations/v2_OpenEnded_mscoco_val2014_questions.json
-              - eventgpt/annotations/v2_mscoco_val2014_annotations.json
+              - eventgpt_dataset/AibeeQA/annotations/label_result_530_llava-style-box_caption_en.json
         test:
           url:
               - ""
               - ""
           storage:
-              - eventgpt/annotations/label_result_530_llava-style-box_caption_en.json
-              - eventgpt/annotations/answer_list.json
+              - eventgpt_dataset/AibeeQA/annotations/label_result_530_llava-style-box_caption_en.json
       images:
-          storage: eventgpt/images/
+          storage: eventgpt_dataset/AibeeQA/images

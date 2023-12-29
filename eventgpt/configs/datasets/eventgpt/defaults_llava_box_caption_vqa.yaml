@@ -16,8 +16,7 @@ datasets:
               - ""
               - ""
           storage:
-              - eventgpt/annotations/vqa_llava_style_box_caption_train.json  # vqa_llava_style_box_caption_train.json, vg_and_myGritLabel_train.json
-              - eventgpt/annotations/vqa_llava_style_box_caption_test.json
+              - eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_train.json  # vqa_llava_style_box_caption_train.json, vg_and_myGritLabel_train.json
         val:
           url:
               # TODO make this order insensitive
@@ -26,16 +25,12 @@ datasets:
               - ""
               - ""
           storage:
-              - eventgpt/annotations/vqa_llava_style_box_caption_test.json
-              - eventgpt/annotations/answer_list.json
-              - eventgpt/annotations/v2_OpenEnded_mscoco_val2014_questions.json
-              - eventgpt/annotations/v2_mscoco_val2014_annotations.json
+              - eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_test.json
         test:
           url:
               - ""
               - ""
           storage:
-              - eventgpt/annotations/vqa_llava_style_box_caption_test.json
-              - eventgpt/annotations/answer_list.json
+              - eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_test.json
       images:
-          storage: eventgpt/images/
+          storage: eventgpt_dataset/BoxCaptionVQA/images/
