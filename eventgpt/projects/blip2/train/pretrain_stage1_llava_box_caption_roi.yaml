@@ -14,7 +14,7 @@ model:
   num_query_token: 32
   prompt: "Question: Please output the caption according to the given bounding box: {}. Answer: "
 
-  box_feat_size: 16
+  # box_feat_size: 16
 
 
 datasets:
@@ -23,7 +23,7 @@ datasets:
     vis_processor:
         train:
           name: "blip2_box_image_train"  # different from blip2_image_train it doesnt have flip and randomcrop
-          image_size: 384
+          image_size: 364
     text_processor:
         train:
           name: "blip_question"
