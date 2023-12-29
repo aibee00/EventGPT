@@ -283,42 +283,41 @@ if __name__ == "__main__":
     tb = TestBlip2()
     image_index = 600
 
-    if sys.argv[1] == "10":
-        if stage1:=False:
-            image_root = get_cache_path("eventgpt_dataset/BoxCaptionVQA/images")  # testset on stage1
-            label_path = get_cache_path("eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_test.json")  # testset on stage1
-        else:
-            image_root = get_cache_path("eventgpt_dataset/AibeeQA/images")
-            label_path = get_cache_path("eventgpt_dataset/AibeeQA/annotations/label_result_530_llava-style-box_caption_en_test.json")  # AibeeQA, testset on stage2
+    if stage1:=False:
+        image_root = get_cache_path("eventgpt_dataset/BoxCaptionVQA/images")  # testset on stage1
+        label_path = get_cache_path("eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_test.json")  # testset on stage1
+    else:
+        image_root = get_cache_path("eventgpt_dataset/AibeeQA/images")
+        label_path = get_cache_path("eventgpt_dataset/AibeeQA/annotations/label_result_530_llava-style-box_caption_en_test.json")  # AibeeQA, testset on stage2
 
-        assert Path(image_root).exists(), f"Image root {image_root} not exists!"
-        assert Path(label_path).exists(), f"Label path {label_path} not exists!"
-        
-        RANDOM_IMAGE = False
-        Image_save_path = "./test_output/llava_style_box_caption_stage2"
+    assert Path(image_root).exists(), f"Image root {image_root} not exists!"
+    assert Path(label_path).exists(), f"Label path {label_path} not exists!"
+    
+    RANDOM_IMAGE = False
+    Image_save_path = "./test_output/llava_style_box_caption_stage2"
 
-        USE_NEW_IMAGE_WITH_BBOX = False  # 是否使用新的图片(带 bbox 信息)
-        image_path_with_bbox = Path("/training/wphu/Dataset/eventgpt/eventgpt/fewshot_data_eventgpt/person_index/images/")
-        
-        # Load label
-        with open(label_path) as json_file:
-            labels = json.load(json_file)
+    USE_NEW_IMAGE_WITH_BBOX = False  # 是否使用新的图片(带 bbox 信息)
+    image_path_with_bbox = Path("/training/wphu/Dataset/eventgpt/eventgpt/fewshot_data_eventgpt/person_index/images/")
+    
+    # Load label
+    with open(label_path) as json_file:
+        labels = json.load(json_file)
 
-        ## loads BLIP2-OPT-2.7b caption model, without finetuning on coco.
-        model_name="blip2_opt_llava_box_caption_roi"
-        model_type="pretrain_opt2.7b_llava_box_caption_roi"
+    ## loads BLIP2-OPT-2.7b caption model, without finetuning on coco.
+    model_name="blip2_opt_llava_box_caption_roi"
+    model_type="pretrain_opt2.7b_llava_box_caption_roi"
 
-        model, vis_processors, _ = load_model_and_preprocess(
-            name=model_name, model_type=model_type, is_eval=True, device=device
-        )
+    model, vis_processors, _ = load_model_and_preprocess(
+        name=model_name, model_type=model_type, is_eval=True, device=device
+    )
 
-        tb.test_blip2_llava_style_box_caption(
-            model, 
-            vis_processors, 
-            image_index, 
-            verbose=0, 
-            save_img_path=Image_save_path,
-            img_with_bbox=USE_NEW_IMAGE_WITH_BBOX,
-            image_path_with_bbox=image_path_with_bbox
-        )
+    tb.test_blip2_llava_style_box_caption(
+        model, 
+        vis_processors, 
+        image_index, 
+        verbose=0, 
+        save_img_path=Image_save_path,
+        img_with_bbox=USE_NEW_IMAGE_WITH_BBOX,
+        image_path_with_bbox=image_path_with_bbox
+    )
 

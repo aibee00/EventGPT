@@ -24,6 +24,8 @@ The stage2 trained on AibeeQA dataset, which was labeled by us in handcraft way.
 
 Assumption: The data is putted at path `cache`, which can be configed at `eventgpt/configs/default.yaml`.
 
+You can download dataset from [BaiduWebDisk](https://pan.baidu.com/s/1NLldQg2QTjCrWmgynlfKyA?pwd=32kq). (提取码: 32kq). You should extract it under the path: `./cache`
+
 ## 1.3 Run/Model/Datasets/Processors and some others configs
 
 This can be set in the following yaml files:
@@ -51,7 +53,7 @@ bash run_scripts/blip2/train/pretrain_stage2_llava_box_caption_roi.sh
 Note: Before you run evaluation, you may need to config some parameters first at the file `tests/models/test_blip2_vqa.py`.
 
 ```bash
-python tests/models/test_blip2_vqa.py 10 |& tee test.log
+python tests/models/test_blip2_vqa.py |& tee test.log
 ```
 
 
