@@ -14,6 +14,8 @@ model:
   num_query_token: 32
   prompt: "Question: Please output the caption according to the given bounding box: {}. Answer: "
 
+  box_feat_size: 16
+
 
 datasets:
   # event_vqa:

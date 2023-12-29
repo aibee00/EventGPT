@@ -18,6 +18,8 @@ model:
   max_txt_len: 2048
   num_query_token: 32
 
+  box_feat_size: 16
+
 
 datasets:
   llava_box_caption_aibeeQA:
