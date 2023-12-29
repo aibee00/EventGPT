@@ -5,15 +5,17 @@
 
 model:
   arch: pretrain_opt2.7b_llava_box_caption_roi
-  load_finetuned: False
-  load_pretrained: True  # Set here for eval
+  load_finetuned: True  # Set here for eval
+  load_pretrained: False  # Set here for eval
 
+  finetuned: "output/BLIP2/LlavaStyle/Pretrain_stage2/20231205062/checkpoint_99.pth"
   # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_opt2.7b.pth"
   # pretrained: "output/BLIP2/LlavaStyle/Pretrain_stage1/20231128104/checkpoint_9.pth"  # 2048 from epoch10
   pretrained: "output/BLIP2/LlavaStyle/Pretrain_stage2/20231205062/checkpoint_99.pth"  # stage2 of p364 boxfeat8
 
   # vit encoder
   image_size: 364
+  box_feat_size: 16
   drop_path_rate: 0
   use_grad_checkpoint: False
   vit_precision: "fp16"

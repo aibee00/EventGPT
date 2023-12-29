@@ -26,11 +26,13 @@ datasets:
               - ""
           storage:
               - eventgpt_dataset/AibeeQA/annotations/label_result_530_llava-style-box_caption_en_test.json
+              - eventgpt/annotations/answer_list.json
         test:
           url:
               - ""
               - ""
           storage:
               - eventgpt_dataset/AibeeQA/annotations/label_result_530_llava-style-box_caption_en_test.json
+              - eventgpt/annotations/answer_list.json
       images:
           storage: eventgpt_dataset/AibeeQA/images/

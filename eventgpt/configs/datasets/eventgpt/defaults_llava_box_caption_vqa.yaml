@@ -26,11 +26,13 @@ datasets:
               - ""
           storage:
               - eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_test.json
+              - eventgpt/annotations/answer_list.json
         test:
           url:
               - ""
               - ""
           storage:
               - eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_test.json
+              - eventgpt/annotations/answer_list.json
       images:
           storage: eventgpt_dataset/BoxCaptionVQA/images/

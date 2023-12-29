@@ -20,5 +20,6 @@ datasets:
               - https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/vqav2/v2_mscoco_val2014_annotations.json
           storage:
               - eventgpt_dataset/BoxCaptionVQA/annotations/vqa_llava_style_box_caption_test.json
+              - eventgpt/annotations/answer_list.json
       images:
           storage: eventgpt_dataset/BoxCaptionVQA

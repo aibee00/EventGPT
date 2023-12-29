@@ -7,10 +7,12 @@ model:
   arch: blip2_opt_llava_box_caption_roi
   model_type: pretrain_opt2.7b_llava_box_caption_roi
   load_finetuned: False
-  load_pretrained: False
+  load_pretrained: True
+  # finetuned: ""
   # intialize stage 2 pretraining from stage 1 pretrained model
   # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained.pth"
-  pretrained: "output/BLIP2/LlavaStyle/Pretrain_stage1/20231128104/checkpoint_9.pth"  # 相对路径时不要以‘/’开头
+  # pretrained: "output/BLIP2/LlavaStyle/Pretrain_stage1/20231128104/checkpoint_9.pth"  # 相对路径时不要以‘/’开头
+  pretrained: "output/BLIP2/LlavaStyle/Pretrain_stage2/20231205062/checkpoint_99.pth"  # 相对路径时不要以‘/’开头
   freeze_vit: True
   # vit_model: "swint"
 
@@ -18,7 +20,7 @@ model:
   max_txt_len: 2048
   num_query_token: 32
 
-  # box_feat_size: 16
+  box_feat_size: 16
 
 
 datasets:
