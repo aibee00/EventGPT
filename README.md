@@ -52,6 +52,8 @@ bash run_scripts/blip2/train/pretrain_stage2_llava_box_caption_roi.sh
 
 Note: Before you run evaluation, you may need to config some parameters first at the file `tests/models/test_blip2_vqa.py`.
 
+Run docker and run the script like this:
+
 ```bash
 python tests/models/test_blip2_vqa.py |& tee test.log
 ```
