@@ -152,6 +152,7 @@ debug*/
 *.dat
 *.tsv
 *.gz
+*.pyc
 
 cache/
 pretrain_weights
