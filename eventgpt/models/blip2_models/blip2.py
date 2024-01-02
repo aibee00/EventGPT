@@ -27,7 +27,7 @@ from eventgpt.models.clip_vit import create_clip_vit_L
 # from eventgpt.models.swint_models import create_swint
 from transformers import BertTokenizer
 
-BERT_LOCAL_PATH = get_cache_path("bert-base-uncased")
+BERT_LOCAL_PATH = os.path.dirname(get_cache_path("bert-base-uncased/pytorch_model.bin"))
 
 class LN_VISION_NORM():
 
