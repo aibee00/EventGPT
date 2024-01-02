@@ -8,11 +8,15 @@ It is a multi-modal model equipped with ImageEncoder and LLM.
 ## 1.1 Environments
 Start a docker image to run environment.
 
-Note: Before you run the docker as following, you may need to change the local mount path first in the `start_docker.sh`.
+Note: Before you run the docker as following, you may need to change the local mount path(instead with your own path) first in the `start_docker.sh`. If you can not access to `harbor.aibee.cn/auto_car/visualglm:lavis.v1.1`, you may need to download the docker from [BaiduWebDisk](https://pan.baidu.com/s/1padY_ImFKWV7Eigs29RFZg?pwd=6zp4), (提取码: 6zp4).
 
+Before you start docker, you need to load the docker image first.：
 ```bash
+docker load -i visualglm_lavis_v1.1.tar
 bash start_docker.sh
 ```
+
+>Note: Concat part of .tar files: `cat <filename>.part-* > <filename>.tar`
 
 ## 1.2 Datasets
 

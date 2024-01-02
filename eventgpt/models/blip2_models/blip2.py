@@ -17,7 +17,7 @@ import torch.nn.functional as F
 
 import eventgpt.common.dist_utils as dist_utils
 from eventgpt.common.dist_utils import download_cached_file
-from eventgpt.common.utils import is_url, get_abs_path
+from eventgpt.common.utils import is_url, get_abs_path, get_cache_path
 from eventgpt.common.logger import MetricLogger
 from eventgpt.models.base_model import BaseModel
 from eventgpt.models.blip2_models.Qformer import BertConfig, BertLMHeadModel
@@ -27,7 +27,7 @@ from eventgpt.models.clip_vit import create_clip_vit_L
 # from eventgpt.models.swint_models import create_swint
 from transformers import BertTokenizer
 
-BERT_LOCAL_PATH = "/training/wphu/Checkpoints/bert-base-uncased"
+BERT_LOCAL_PATH = get_cache_path("bert-base-uncased")
 
 class LN_VISION_NORM():
 
