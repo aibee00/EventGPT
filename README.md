@@ -70,7 +70,7 @@ python tests/models/test_blip2_vqa.py |& tee test.log
 
 # 4. Experiments
 
-To increase the size of input image and box_features(**image_size** and **box_feat_size**), you need to change the config in following yaml files:
+To increase the size of the input image and the box features, you need to modify the corresponding configurations in the following YAML files. The specific parameters to change are '**image_size**' and '**box_feat_size**'.:
 
 - `eventgpt/configs/models/blip2/blip2_opt2.7b_llava_box_caption_roi.yaml`
 - `eventgpt/projects/blip2/train/pretrain_stage1_llava_box_caption_roi.yaml`
