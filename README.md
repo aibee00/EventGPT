@@ -68,4 +68,11 @@ Run docker and run the script like this:
 python tests/models/test_blip2_vqa.py |& tee test.log
 ```
 
+# 4. Experiments
+
+To increase the size of input image and box_features(**image_size** and **box_feat_size**), you need to change the config in following yaml files:
+
+- `eventgpt/configs/models/blip2/blip2_opt2.7b_llava_box_caption_roi.yaml`
+- `eventgpt/projects/blip2/train/pretrain_stage1_llava_box_caption_roi.yaml`
+- `eventgpt/projects/blip2/train/pretrain_stage2_llava_box_caption_roi.yaml`
 
