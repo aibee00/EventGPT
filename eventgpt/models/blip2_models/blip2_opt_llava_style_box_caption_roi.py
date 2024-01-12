@@ -237,7 +237,8 @@ class Blip2OPTLlavaBoxCaptionRoi(Blip2Base):
             # roi
             patch_size = int(np.sqrt(image_feature.shape[-2] - 1))  # -1 is for cls_token
             bbox_denormalized = self.denorm(torch.tensor(eval(bbox)), (patch_size, patch_size))  # [4,]
-            bbox_embed = self.get_roi_feature(image_feature[bz_index: bz_index+1], bbox_denormalized, output_size=(8,8))  # [1, 1+16*16, embed_dim]
+            bbox_embed = self.get_roi_feature(image_feature[bz_index: bz_index+1], bbox_denormalized, 
+                    output_size=(self.box_feat_size, self.box_feat_size))  # [1, 1+16*16, embed_dim]
             bbox_embed_proj = self.opt_proj(bbox_embed)  # [1, 1+16*16, 768]
             box_embeds.append(bbox_embed_proj)
 
