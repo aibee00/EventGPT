@@ -13,6 +13,7 @@ Note: Before you run the docker as following, you may need to change the local m
 Before you start docker, you need to load the docker image first.：
 ```bash
 docker load -i visualglm_lavis_v1.1.tar
+cd EventGPT  # 切换到工程目录
 bash start_docker.sh
 ```
 
