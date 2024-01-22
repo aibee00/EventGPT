@@ -54,6 +54,8 @@ bash run_scripts/blip2/train/pretrain_stage1_llava_box_caption_roi.sh
 ```
 
 ## 2.2 Stage2
+Note: Before you run stage2, please config path of checkpoint which was trained at stage1.
+Config at [here](https://github.com/aibee00/EventGPT/blob/2d12aef2b4950419037fdfefac87a099d7c7c83f/eventgpt/projects/blip2/train/pretrain_stage2_llava_box_caption_roi.yaml#L15)
 
 ```bash
 bash run_scripts/blip2/train/pretrain_stage2_llava_box_caption_roi.sh 
