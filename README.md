@@ -27,7 +27,7 @@ The stage1 trained on the first dataset.
 
 The stage2 trained on AibeeQA dataset, which was labeled by us in handcraft way.
 
-Assumption: The data is putted at path `cache`, which can be configed at `eventgpt/configs/default.yaml`.
+Assumption: The data is putted at path `cache`, which can be configed at `[eventgpt/configs/default.yaml](https://github.com/aibee00/EventGPT/blob/8e2008b2fbae8f1a7fd17943190a62f119782979/eventgpt/configs/default.yaml#L8)`.
 
 You can download dataset from [BaiduWebDisk](https://pan.baidu.com/s/11oeqB3JV4X3cYJO73U7hjQ?pwd=nce3). (提取码: nce3). You should extract it under the path: `./cache`
 
