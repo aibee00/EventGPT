@@ -43,9 +43,9 @@ This can be set in the following yaml files:
 
 ## **!!!Prepare**
 Before you run, please make sure you have downloaded the following files from [BaiduWebDisk](https://pan.baidu.com/s/11oeqB3JV4X3cYJO73U7hjQ?pwd=nce3). (提取码: nce3):
-- `cache/bert-base-uncased`
-- `cache/eventgpt_dataset/AibeeQA`
-- `cache/eventgpt_dataset/BoxCaptionVQA`
+- `EventGPT/cache/bert-base-uncased`
+- `EventGPT/cache/eventgpt_dataset/AibeeQA`
+- `EventGPT/cache/eventgpt_dataset/BoxCaptionVQA`
 
 ## 2.1 Stage1
 
